@@ -1,0 +1,123 @@
+// vim: fdm=marker
+
+configuration {
+  modes: "window,drun,run,ssh";
+  font: "JetBrains Mono 20";
+  drun-display-format: "{name}";
+}
+
+* {
+  bg: #1C2425;
+  bgt: #1C242595;
+  t: transparent;
+  fg: #93a9a9ff;
+
+  selected-bg: #69797940;
+  selected-fg: #d8dcd3ff;
+
+  active: #a9b665;
+  urgent: #fb4934;
+}
+
+window {
+  fullscreen: true;
+  padding: 35% 30%;
+  transparency: "real";
+  background-color: @bgt;
+  border-color: @t;
+}
+
+listview {
+  border: 0 0 0 0;
+  padding: 23 0 0;
+  scrollbar: true;
+}
+
+scrollbar {
+  width:        4px;
+  border:       0;
+  handle-color: @fg;
+  handle-width: 8px;
+  padding:      0 5;
+}
+
+entry {
+  placeholder: "";
+}
+
+textbox {
+  text-color: @fg;
+}
+
+element {
+  border:  0;
+  padding: 2px;
+}
+element.normal.normal {
+  background-color: transparent;
+  text-color:       @fg;
+}
+element.normal.urgent {
+  background-color: transparent;
+  text-color:       @urgent;
+}
+element.normal.active {
+  background-color: transparent;
+  text-color:       @active;
+}
+element.selected.normal {
+  background-color: @selected-bg;
+  text-color:       @selected-fg;
+}
+element.selected.urgent {
+  background-color: transparent;
+  text-color:       @urgent;
+}
+element.selected.active {
+  background-color: transparent;
+  text-color:       @selected-fg;
+}
+element.alternate.normal {
+  background-color: transparent;
+  text-color:       @fg;
+}
+element.alternate.urgent {
+  background-color: transparent;
+  text-color:       @urgent;
+}
+element.alternate.active {
+  background-color: transparent;
+  text-color:       @active;
+}
+
+sidebar {
+  border:       2px 0 0;
+  border-color: @fg;
+}
+
+inputbar {
+  spacing:    0;
+  text-color: @fg;
+  padding:    2px;
+  children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+  spacing:    0;
+  text-color: @fg;
+}
+
+button.selected {
+  background-color: @bg;
+  text-color:       @fg;
+}
+
+textbox-prompt-sep {
+  expand:     false;
+  str:        ":";
+  text-color: @fg;
+  margin:     0 0.3em 0 0;
+}

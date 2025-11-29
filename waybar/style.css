@@ -1,0 +1,110 @@
+* {
+  font-family: "SF Pro Display", "Font Awesome 6 Free Solid", "Font Awesome 6 Free";
+  font-size: 13px;
+  font-weight: 400;
+  color: #e5e5e5;
+  background: transparent;
+  border: none;
+  min-height: 0;
+}
+
+#waybar {
+  background: rgba(30, 30, 30, 0.60);
+  border: none;
+  padding: 4px 10px;
+}
+
+#workspaces, #group-status, #mpris, #battery, #pulseaudio, #clock, #network {
+  margin: 3px 5px;
+  padding: 0;
+}
+
+#workspaces button,
+#clock,
+#pulseaudio,
+#battery,
+#network,
+#custom-launcher {
+  border-radius: 10px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+#workspaces {
+  padding: 0 4px;
+}
+
+#workspaces button {
+  font-size: 12px;
+  color: #dddddd;
+  background: transparent;
+  border: none;
+  padding: 0 6px;
+  margin-right: 6px;
+}
+
+#workspaces button:hover,
+#workspaces button.active {
+  color: #ffffff;
+  background: #323d3d;
+}
+
+#workspaces button.active {
+  font-size: 13px;
+}
+
+#group-status {
+  background: transparent;
+  color: #e0e0e0;
+  padding: 0 6px;
+}
+
+#battery, #pulseaudio, #clock, #network {
+  padding: 0 8px;
+  color: #dddddd;
+}
+
+#clock {
+  font-weight: 500;
+  font-size: 13px;
+  color: #fafafa;
+}
+
+#clock:hover,
+#pulseaudio:hover,
+#battery:hover,
+#network:hover,
+#custom-launcher:hover {
+  color: #ffffff;
+  background: #323d3d;
+}
+
+#custom-launcher {
+  color: #dddddd;
+  font-size: 10px;
+  padding: 0 10px 0 20px;
+}
+
+#workspaces, #group-status {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+#custom-red,
+#custom-yellow,
+#custom-green {
+  font-family: "Segoe UI Symbol", sans-serif;
+  font-size: 8px;
+  margin: 3px 6px;
+  padding: 0;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+#custom-red { color: #ff5f57;}
+#custom-yellow { color: #ffbd2e; }
+#custom-green { color: #28c940; }
+
+#custom-red:hover,
+#custom-yellow:hover,
+#custom-green:hover {
+  opacity: 1;
+}
