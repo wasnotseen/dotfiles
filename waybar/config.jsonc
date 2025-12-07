@@ -1,140 +1,137 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 24,
-  "exclusive": true,
-
-  /*"margin-top": 5,
-  "margin-bottom": 5,
+  "height": 30,
+  "exclusive": false,
+  "margin-top": 0,
   "margin-left": 15,
-  "margin-right": 15,*/
+  "margin-right": 15,
 
-  "modules-left": [/*"custom/launcher",*/"hyprland/workspaces"],
-  /*"modules-center": ["custom/red", "custom/yellow", "custom/green"],*/
-
-  // one “chip” that groups the three modules
-  "modules-right": ["group/status"],
+  "modules-left": [
+    "custom/arch",
+    "custom/zen",
+    "custom/kitty",
+    "custom/vscode",
+    "custom/files"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": ["custom/caffeine", "group/status"],
 
   "group/status": {
     "orientation": "horizontal",
-   // "spacing": 5,
-    "modules": [/*"cpu", "memory", "custom/cpufreq", "custom/power"*/"network", "pulseaudio", "battery", "clock"]
+    "modules": ["network", "pulseaudio", "battery", "clock"]
   },
 
-"memory": {
-  "interval": 5,
-  "tooltip": false,
-  "format": "  {percentage}%",
-  "format-alt": "  {used:0.1f}/{total:0.1f} GiB",
-  "max-length": 12,
-  "states": { "warning": 70, "critical": 90 }
-},
-
-"custom/cpufreq": {
-  "interval": 2,
-  "tooltip": false,
-  "format": "   {} GHz",
-  "exec": "awk -v cores=$(nproc) '/cpu MHz/ {sum+=$4} END {printf \"%.1f\", sum/cores/1000}' /proc/cpuinfo"
-},
-
-"custom/power": {
-  "interval": 2,
-  "tooltip": false,
-  "format": "  {} W",
-  "exec": "c=$(cat /sys/class/power_supply/BAT0/current_now); v=$(cat /sys/class/power_supply/BAT0/voltage_now); awk -v c=\"$c\" -v v=\"$v\" 'BEGIN{ printf \"%.1f\", (c*v)/1e12 }'"
-},
-
-//"custom/launcher": {
-//  "format": "",                     
-//  "tooltip": false,
-//  "on-click": "omarchy-menu",             
-//    "on-click-right": "xdg-terminal-exec",
-//  "on-click-right": "pkill walker",
-//  "interval": 0
-//},
-
-"hyprland/workspaces": {
-  "format": "{name}",
-  "active-only": false,   // show more than the current one
-  "show-empty": false,    // hide empty workspaces
-  "all-outputs": false,
-  "sort-by-number": true,
-  "on-click": "activate",
-  "on-scroll-up":   "hyprctl dispatch workspace e-1",
-  "on-scroll-down": "hyprctl dispatch workspace e+1"
-},
-
-"cpu": {
-  "interval": 2,                  // update every 2s
-  "tooltip": false,
-  "format": "  {usage}%",        //  is Font Awesome chip icon
-  "max-length": 10
-},
-
-"mpris": {
-  "format": "{title} - {artist}",
-  "max-length": 40,
-  "tooltip": false,
-  "player-icons": {
-    "default": ""
+  "custom/zen": {
+    "format": "Zen",
+    "tooltip": false,
+    "on-click": "zen-browser"
   },
-  "on-click": "playerctl play-pause",
-  "on-scroll-up": "playerctl next",
-  "on-scroll-down": "playerctl previous",
-   "players": "mpd"
-},
 
-"battery": {
-  "bat": "BAT1",
-  "interval": 15,
-  "tooltip": false,
-  "icon-size": 13,
-  "format": "{icon}   {capacity}%",
-  "format-charging": "   {capacity}%",
-  "format-full": "   {capacity}%",
-  "format-icons": ["","","","",""]
-},
+  "custom/kitty": {
+    "format": "Kitty",
+    "tooltip": false,
+    "on-click": "kitty"
+  },
 
-"pulseaudio": {
-  "tooltip": false,
-  "scroll-step": 2,
-  "icon-size": 13,
-  "format": "{icon}   {volume}%",
-  "format-muted": "  {volume}%",
-  "format-icons": { "default": ["",""], "headphones": "" },
-  "on-click": "kitty --class com.omarchy.Wiremix wiremix"
-},
+  "custom/vscode": {
+    "format": "VScode",
+    "tooltip": false,
+    "on-click": "code"
+  },
 
-"network": {
-  "interface": "wlan0",                // change if needed (e.g., "wlp3s0")
+  "custom/files": {
+    "format": "Files",
+    "tooltip": false,
+    "on-click": "nautilus"
+  },
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "active-only": false,
+    "show-empty": true,
+    "all-outputs": false,
+    "sort-by-number": true,
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "persistent_workspaces": {
+      "*": 10
+    }
+  },
+
+  "cpu": {
+    "interval": 2,
+    "tooltip": false,
+    "format": "  {usage}%",
+    "max-length": 10
+  },
+
+  "memory": {
+    "interval": 5,
+    "tooltip": false,
+    "format": "  {percentage}%",
+    "format-alt": "  {used:0.1f}/{total:0.1f} GiB",
+    "max-length": 12,
+    "states": { "warning": 70, "critical": 90 }
+  },
+
+  "battery": {
+    "bat": "BAT1",
+    "interval": 15,
+    "tooltip": false,
+    "icon-size": 13,
+    "format": "{icon}   {capacity}%",
+    "format-charging": "   {capacity}%",
+    "format-full": "   {capacity}%",
+    "format-icons": ["","","","",""]
+  },
+
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 2,
+    "icon-size": 13,
+    "format": "{icon}   {volume}%",
+    "format-muted": "  {volume}%",
+    "format-icons": { "default": ["",""], "headphones": "" },
+    "on-click": "kitty --class com.omarchy.Wiremix wiremix"
+  },
+
+  "network": {
+  "interface": "wlan0",
   "tooltip": false,
   "interval": 5,
-  "format-wifi": "{icon}  {essid} {signalStrength}%",
-  "format-ethernet": "󰈀  {ipaddr}",   // Ethernet icon
-  "format-disconnected": "󰤭  Offline", // No Wi-Fi
-  "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"], // weakest → strongest
+  "format-wifi": "{icon}   {signalStrength}%",
+  "format-ethernet": "  {ipaddr}",
+  "format-disconnected": "  Offline",
+  "format-icons": [" "],
   "max-length": 25,
   "on-click": "kitty --class ImpalaTerm impala"
 },
 
   "clock": {
     "tooltip": false,
-      "format": "{:%a %e, %H:%M}",
+    "format": "{:%a %e, %H:%M}",
     "on-click": "kitty --class floatingkitty -e calcurse"
-    },
-  "custom/red": {
-    "format": "⬤",
-    "on-click": "bash ~/.config/waybar/close-workspace.sh",
-    "tooltip": false
   },
-  "custom/yellow": {
-    "format": "⬤",
-    "on-click": "hyprctl dispatch togglefloating",
-    "tooltip": false
+  "custom/arch": {
+  "format": "",
+  "tooltip": false,
+  "on-click": "rofi -show drun"
   },
-  "custom/green": {
-    "format": "⬤",
-    "on-click": "hyprctl dispatch fullscreen",
-    "tooltip": false
+  "custom/caffeine": {
+  "return-type": "json",
+  "format": "{text}",
+  "exec": "~/.local/bin/waybar-caffeine status",
+  "interval": 3,
+  "tooltip": false,
+  "on-click": "~/.local/bin/waybar-caffeine toggle"
+  },
+  "hyprland/window": {
+  "format": "{}",
+  "tooltip": false,
+  "max-length": 50
   }
 }
